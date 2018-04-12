@@ -1,22 +1,30 @@
 "use strict";
 
 declare var angular: angular.IAngularStatic;
-import { Phone, PhoneData } from '../core/phone/phone.service';
+import { downgradeComponent } from "@angular/upgrade/static";
 
-class PhoneDetailController {
+import { Component } from "@angular/core";
+
+import { Phone, PhoneData } from '../core/phone/phone.service';
+import { RouteParams } from "../ajs-upgraded-providers";
+
+@Component({
+  selector: 'phone-detail',
+  templateUrl: './phone-detail.template.html'
+})
+
+export class PhoneDetailComponent {
   phone: PhoneData;
   mainImageUrl: string;
 
-  static $inject = ['$routeParams', 'phone'];
-  constructor($routeParams: angular.route.IRouteParamsService, phone: Phone) {
-    let phoneId = $routeParams['phoneId'];
-    phone.get(phoneId).subscribe(data => {
-      this.phone = data;
-      this.setImage(data.images[0]);
+  constructor(routeParams: RouteParams, phone: Phone) {
+    phone.get(routeParams['phoneId']).subscribe(phone => {
+      this.phone = phone;
+      this.setImage(phone.images[0]);
     })
   }
   
-  setImage(imageUrl:string) {
+  setImage(imageUrl: string) {
     this.mainImageUrl = imageUrl;
   }
 }
@@ -24,24 +32,4 @@ class PhoneDetailController {
 
 angular
   .module("phoneDetail")
-  .component("phoneDetail", {
-    templateUrl: "./phone-detail.template.html",
-    controller: PhoneDetailController
-});
-
-// [
-//   "$routeParams",
-//   "Phone",
-//   function PhoneDetailController($routeParams, Phone) {
-//     var self = this;
-//     self.phone = Phone.get({ phoneId: $routeParams.phoneId }, function(
-//       phone
-//     ) {
-//       self.setImage(phone.images[0]);
-//     });
-
-//     self.setImage = function setImage(imageUrl) {
-//       self.mainImageUrl = imageUrl;
-//     };
-//   }
-// ]
+  .directive("phoneDetail", downgradeComponent({component: PhoneDetailComponent}) as angular.IDirectiveFactory);

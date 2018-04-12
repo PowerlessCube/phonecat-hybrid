@@ -7,6 +7,9 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from "./app.component";
 import { Phone } from '../app-js/core/phone';
 import { PhoneListComponent } from '../app-js/phone-list';
+import { PhoneDetailComponent } from "../app-js/phone-detail";
+import { routeParamsProvider } from '../app-js/ajs-upgraded-providers';
+import { CheckmarkPipe } from "../app-js/core";
 
 @NgModule({
   imports: [
@@ -17,13 +20,17 @@ import { PhoneListComponent } from '../app-js/phone-list';
   ],
   declarations: [
     AppComponent,
-    PhoneListComponent
+    PhoneListComponent,
+    PhoneDetailComponent,
+    CheckmarkPipe
   ],
   entryComponents: [
-    PhoneListComponent
+    PhoneListComponent,
+    PhoneDetailComponent
   ],
   providers: [
-    Phone
+    Phone,
+    routeParamsProvider
   ],
   bootstrap: [AppComponent]
 })

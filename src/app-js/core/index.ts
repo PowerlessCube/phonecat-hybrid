@@ -1,3 +1,3 @@
 import "./phone";
 import "./core.module";
-import "./checkmark/checkmark.filter";
+export { CheckmarkPipe } from "./checkmark/checkmark.pipe";
