@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 
-import { PhoneDetailComponent } from "../app-js/phone-detail";
-import { PhoneListComponent } from "../app-js/phone-list";
+import { PhoneDetailComponent } from "./phone-detail";
+import { PhoneListComponent } from "./phone-list";
 
 const routes: Routes = [
     { path: '', redirectTo: 'phones', pathMatch: 'full' },

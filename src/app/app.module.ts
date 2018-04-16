@@ -5,10 +5,10 @@ import { HttpModule } from "@angular/http";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { CheckmarkPipe } from "../app-js/core";
-import { Phone } from '../app-js/core/phone';
-import { PhoneListComponent } from '../app-js/phone-list';
-import { PhoneDetailComponent } from "../app-js/phone-detail";
+import { CheckmarkPipe } from "./core";
+import { Phone } from './core/phone';
+import { PhoneListComponent } from './phone-list';
+import { PhoneDetailComponent } from "./phone-detail";
 
 @NgModule({
   imports: [
