@@ -9,6 +9,7 @@ import { Phone } from '../app-js/core/phone';
 import { PhoneListComponent } from '../app-js/phone-list';
 import { PhoneDetailComponent } from "../app-js/phone-detail";
 import { routeParamsProvider } from '../app-js/ajs-upgraded-providers';
+import { AppRoutingModule } from "./app-routing.module";
 import { CheckmarkPipe } from "../app-js/core";
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CheckmarkPipe } from "../app-js/core";
     BrowserModule, 
     UpgradeModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
