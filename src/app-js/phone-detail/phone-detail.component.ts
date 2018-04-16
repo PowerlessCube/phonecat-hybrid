@@ -1,13 +1,8 @@
 "use strict";
-
-declare var angular: angular.IAngularStatic;
-import { downgradeComponent } from "@angular/upgrade/static";
-
 import { Component } from "@angular/core";
 import { ActivatedRoute } from '@angular/router';
 
 import { Phone, PhoneData } from '../core/phone/phone.service';
-import { RouteParams } from "../ajs-upgraded-providers";
 
 @Component({
   selector: 'phone-detail',
@@ -29,9 +24,4 @@ export class PhoneDetailComponent {
   setImage(imageUrl: string) {
     this.mainImageUrl = imageUrl;
   }
-}
-
-
-angular
-  .module("phoneDetail")
-  .directive("phoneDetail", downgradeComponent({component: PhoneDetailComponent}) as angular.IDirectiveFactory);
+};
